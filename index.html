@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $.get("https://swapi.dev/api/people/", function(data, status){
+      alert("Data: " + data + "\nStatus: " + status);
+      console.log(":::::status:::::");
+      console.log(status);
+      console.log(":::::data:::::");
+      for(i in data.results){
+        let name = "<strong>" + "<p>" + data.results[i].name + "</p>" + "</strong>";
+        let height = "<p>Height: " + data.results[i].height + "</p>";
+        let mass = "<p>Mass: " + data.results[i].mass + "</p>";
+        let hair = "<p>Hair: " + data.results[i].hair_color + "</p>";
+        let skin = "<p>Skin: " + data.results[i].skin_color + "</p>";
+        $(".second").append(name, height, mass, hair, skin)
+      }
+    });
+  });
+});
+</script>
+</head>
+<body>
+
+<button>Send an HTTP GET request to a page and get the result back</button>
+<div class="second"></div>
+</body>
+</html>
+
+
+
